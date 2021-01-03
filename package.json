@@ -1,0 +1,49 @@
+{
+  "name": "ssr-jsx-render",
+  "version": "0.1.0",
+  "description": "Experiment ssr JSX without React.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --env production",
+    "client:dev": "webpack-dev-server --env development",
+    "server:dev": "webpack -p -w --mode development --config webpack.server.config.js",
+    "dev": "npm-run-all  --parallel client:dev server:dev "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adi-L/ssr-jsx-render.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adi-L/ssr-jsx-render/issues"
+  },
+  "homepage": "https://github.com/adi-L/ssr-jsx-render#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-react": "^7.0.0",
+    "@webpack-cli/serve": "^1.2.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-jsx-pragmatic": "^1.0.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-primavera": "^1.3.0",
+    "h": "^0.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^2.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsx-translate": "^1.0.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "npm-run-all": "^4.1.5",
+    "styleit-api": "^1.0.17",
+    "webpack-node-externals": "^2.5.2",
+    "webpack-shell-plugin": "^0.5.0"
+  }
+}
