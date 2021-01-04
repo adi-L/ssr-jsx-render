@@ -7,14 +7,14 @@ import Navbar from './components/Navbar/Navbar';
     return (
         <Header>
             <Navbar />
-            {
-                titles.map(s=>{
-                    return <Title>{s}</Title>
-                })
-            }
-        <button onClick={()=>alert(1)} data-foo="asdasd" >click</button>
+            <br/>
+            <br/>
+            <h1 className="header center blue-text">Starter Template</h1>
+            <div class="row center">
+        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+      </div>
         </Header >
     );
 }
-    
+
 export default App;

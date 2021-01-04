@@ -1,14 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const OUTPUT_PATH = path.join(__dirname, '/dist');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const OUTPUT_PATH = path.join(__dirname, 'dist');
 
 module.exports = (env) => {
 
   const HTMLPlugin = new HtmlWebpackPlugin({
     template: 'index.html'
   });
-
+const cleanPlugin = new CleanWebpackPlugin();
   const config = {
     mode: 'development',
     entry: {
@@ -57,7 +57,7 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js']
     },
-    plugins: [HTMLPlugin],
+    plugins: [HTMLPlugin,cleanPlugin],
     devtool: 'inline-source-map',
     devServer: {
         contentBase: OUTPUT_PATH,
@@ -70,6 +70,6 @@ module.exports = (env) => {
         }
       }
   };
-
+ 
   return config;
 };
