@@ -34,8 +34,8 @@ function createElements(tagName, attrs, children) {
       // eslint-disable-next-line no-underscore-dangle
       element.innerHTML = attrs[prop].__html
     } else if (isEvent(prop)) {
-      const event = prop.replace(/^on/, '').toLowerCase();.
-      
+      const event = prop.replace(/^on/, '').toLowerCase();
+
       element.addEventListener(event, attrs[prop])
     } else {
       // any other prop will be set as attribute
