@@ -1,5 +1,5 @@
 import { isArray } from "./array";
-import { styleObjectToString } from "./style";
+import { styleObjectToString } from "../common/style";
 
 const singleTag = {
     area: 1,
@@ -41,26 +41,23 @@ function collectEelements(jsObject) {
         jsObject = [jsObject];
     }
     for (const iterator of jsObject) {
-        if(isArray(iterator)){
+        if (isArray(iterator)) {
             iterator = collectEelements(iterator);
         }
         if (typeof iterator === "string") {
             collectedElements.push(iterator);
-        }else
-        if (iterator.tag) {
-            let rendered;
-            const renderedAttrs = renderAttrs(iterator.attrs);
-            if (singleTag[iterator.tag]) {
+        } else
+            if (iterator.tag) {
+                let rendered;
+                const renderedAttrs = renderAttrs(iterator.attrs);
+                if (singleTag[iterator.tag]) {
                     rendered = `<${iterator.tag} ${renderedAttrs}/>`;
-            } else {
-                    rendered = `<${iterator.tag} ${renderAttrs(iterator.attrs)}>
-                    ${collectEelements(iterator.children)}
-                    </${iterator.tag}>`;     
+                } else {
+                    rendered = `<${iterator.tag} ${renderAttrs(iterator.attrs)}>${collectEelements(iterator.children)}</${iterator.tag}>`;
+                }
+                collectedElements.push(rendered.replace(" >", ">").trim());
             }
-            collectedElements.push(rendered.replace(" >",">").trim());
-        }
     }
-
     return collectedElements.join("");
 }
 export function renderToString(jsObject) {

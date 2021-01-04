@@ -1,4 +1,4 @@
-import { camelCaseToDash } from "./string";
+import { camelCaseToDash } from "../Server/string";
 
 export function styleObjectToString(styles) {
     let collectStyles = [];
