@@ -15,7 +15,7 @@ export const routes = [
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve({ text: "not found!" })
-                }, 500);
+                }, 50);
             })
         }
     }

@@ -2,10 +2,11 @@ import { renderToString } from "../../../../jsx-render/Server/renderToString"
 
 
 export const createBody = (markup) => {
+    const id = "app";
     const scripts = ["https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js",
-        "http://localhost:9000/index.bundle.js"]
+        "http://localhost:3001/index.bundle.js"]
     const body = <body>
-        <div id="app">
+        <div id={id}>
             {markup}
         </div>
         {
@@ -14,7 +15,6 @@ export const createBody = (markup) => {
             })
         }
     </body>;
-    
-    var a = renderToString(body);
-    return a;
+
+    return renderToString(body);
 }

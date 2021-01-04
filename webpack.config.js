@@ -16,7 +16,7 @@ module.exports = (env) => {
     },
     output: {
       path: OUTPUT_PATH,
-      publicPath: 'http://localhost:9000/',
+      publicPath: 'http://localhost:3001/',
       chunkFilename: '[name].bundle.js',
       filename: '[name].bundle.js'
     },
@@ -63,7 +63,7 @@ module.exports = (env) => {
         contentBase: OUTPUT_PATH,
         historyApiFallback: true,
         compress: true,
-        port: 9000,
+        port: 3001,
         hot: true,
         headers: {
           'Access-Control-Allow-Origin': '*'
