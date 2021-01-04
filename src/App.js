@@ -9,7 +9,7 @@ import Navbar from './components/Navbar/Navbar';
             <Navbar />
             <br/>
             <br/>
-            <h1 className="header center blue-text">Starter Template</h1>
+            <h1 style={{"lineHeight":"60px"}} className="header center blue-text">Starter Template</h1>
             <div class="row center">
         <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
       </div>
