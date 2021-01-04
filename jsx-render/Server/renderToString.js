@@ -38,7 +38,6 @@ function renderAttrs(attrs) {
 function collectEelements(jsObject) {
     const collectedElements = [];
     if (!isArray(jsObject)) {
-        console.log(jsObject)
         jsObject = [jsObject];
     }
     for (const iterator of jsObject) {
@@ -58,13 +57,12 @@ function collectEelements(jsObject) {
                     ${collectEelements(iterator.children)}
                     </${iterator.tag}>`;     
             }
-            collectedElements.push(rendered.replace(" >",">"));
+            collectedElements.push(rendered.replace(" >",">").trim());
         }
     }
 
     return collectedElements.join("");
 }
 export function renderToString(jsObject) {
-    debugger
     return collectEelements(jsObject);
 }

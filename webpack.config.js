@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const OUTPUT_PATH = path.join(__dirname, 'dist');
 
 module.exports = (env) => {
@@ -8,7 +8,7 @@ module.exports = (env) => {
   const HTMLPlugin = new HtmlWebpackPlugin({
     template: 'index.html'
   });
-const cleanPlugin = new CleanWebpackPlugin();
+
   const config = {
     mode: 'development',
     entry: {
@@ -57,7 +57,7 @@ const cleanPlugin = new CleanWebpackPlugin();
     resolve: {
       extensions: ['.js']
     },
-    plugins: [HTMLPlugin,cleanPlugin],
+    plugins: [HTMLPlugin],
     devtool: 'inline-source-map',
     devServer: {
         contentBase: OUTPUT_PATH,
@@ -70,6 +70,6 @@ const cleanPlugin = new CleanWebpackPlugin();
         }
       }
   };
- 
+
   return config;
 };

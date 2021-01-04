@@ -1,10 +1,10 @@
 const express = require('express');
 // const { getState } = require('../Common/State/State');
 const Server = express();
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const { renderer } = require('./Utilis/rendered');
 const { routes } = require('./Utilis/Router/Router');
-Server.use(helmet());
+// Server.use(helmet({ accessControlAllowOrigin: 'http://localhost:3000'}));
 
 const port = 3000; //TODO: moveto env
 

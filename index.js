@@ -13,11 +13,10 @@ if(Route){
 if(window.__intailState) {
     createStore(window.__intailState);
 }
-//BAD!!!!
+//BAD!!!! what can we do..
  const app = document.getElementById('app');
- app.innerHTML = "";
- //TODO: replace beetwen elements
- app.appendChild(<App/>)
+ app.replaceWith(<App/>)
+
 
 
 
