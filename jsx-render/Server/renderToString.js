@@ -52,10 +52,12 @@ function collectEelements(jsObject) {
                 const renderedAttrs = renderAttrs(iterator.attrs);
                 if (singleTag[iterator.tag]) {
                     rendered = `<${iterator.tag} ${renderedAttrs}/>`;
+                    rendered = rendered.replace(" />","/>");
                 } else {
                     rendered = `<${iterator.tag} ${renderAttrs(iterator.attrs)}>${collectEelements(iterator.children)}</${iterator.tag}>`;
+                    rendered= rendered.replace(" >", ">");
                 }
-                collectedElements.push(rendered.replace(" >", ">").trim());
+                collectedElements.push(rendered.trim());
             }
     }
     return collectedElements.join("");
