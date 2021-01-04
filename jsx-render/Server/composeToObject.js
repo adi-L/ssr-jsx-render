@@ -23,20 +23,22 @@ export function createServerElement(tag, attrs, children) {
     return el
 }
 ServerElement.prototype.setAttrs = function (attrs = {}) {
-    
+
     for (const attr in attrs) {
         if (Object.hasOwnProperty.call(attrs, attr)) {
             const value = attrs[attr];
             const _attr = attr.toLowerCase();
+
             if (_attr === 'classname') {
                 this.className = value;
                 delete attrs[attr];
-            }if(_attr === "children") {
-                delete attrs[attr]; 
-            }
-            if(isEvent(attr)){
+            } else if (_attr === "children") {
                 delete attrs[attr];
             }
+           else if (isEvent(attr)) {
+                delete attrs[attr];
+            }
+           
         }
     }
     this.attrs = attrs;
