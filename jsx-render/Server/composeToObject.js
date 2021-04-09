@@ -22,6 +22,23 @@ export function createServerElement(tag, attrs, children) {
     el.setAttrs(attrs);
     return el
 }
+ServerElement.prototype.appendChild = function(child){
+    this.children.push(child);
+}
+ServerElement.prototype.prepend = function(child){
+    this.children.unshift(child);
+}
+ServerElement.prototype.setAttribute = function(key,value){
+    this.attrs[key] = value;
+}
+ServerElement.prototype.getAttribute = function(key){
+    return this.attrs[key];
+}
+ServerElement.prototype.remove = function(){
+    this.tag = null;   
+    this.children = [];
+
+}
 ServerElement.prototype.setAttrs = function (attrs = {}) {
 
     for (const attr in attrs) {
