@@ -11,9 +11,7 @@ function createElements(tagName, attrs, children) {
   return createServerElement(tagName, attrs, children);
 }
 
-function dom(element, attrs, ...children ) {
-  debugger
-  
+function dom(element, attrs, ...children ) {  
   if(!attrs) attrs = {}
   if (typeof element === 'function') {
     const props = Object.assign(attrs,{children:children || [] });
@@ -23,15 +21,6 @@ function dom(element, attrs, ...children ) {
     return element;
   }
     const serverElement = createElements(element, attrs, children);
-    // serverElement.children.map(child=>{
-    //   if(child instanceof ServerElement){
-    //     return child;
-    //   }
-    //   if(typeof child === "string") {
-    //     return child;
-    //   }
-    //   return dom(child);
-    // });
     return serverElement;
 }
 

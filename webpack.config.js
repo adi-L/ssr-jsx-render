@@ -1,22 +1,21 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const OUTPUT_PATH = path.join(__dirname, 'dist');
 
 module.exports = (env) => {
 
-  const HTMLPlugin = new HtmlWebpackPlugin({
-    template: 'index.html'
-  });
+  // const HTMLPlugin = new HtmlWebpackPlugin({
+  //   template: 'index.html'
+  // });
 
   const config = {
     mode: 'development',
-    entry: {
+    entry: {  
       index: ['babel-polyfill', './index.js']
     },
     output: {
       path: OUTPUT_PATH,
-      publicPath: 'http://localhost:3001/',
       chunkFilename: '[name].bundle.js',
       filename: '[name].bundle.js'
     },
@@ -57,13 +56,12 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js']
     },
-    plugins: [HTMLPlugin],
+    plugins: [],
     devtool: 'inline-source-map',
     devServer: {
         contentBase: OUTPUT_PATH,
         historyApiFallback: true,
         compress: true,
-        port: 3001,
         hot: true,
         headers: {
           'Access-Control-Allow-Origin': '*'
