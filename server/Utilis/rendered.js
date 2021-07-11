@@ -5,6 +5,7 @@ const { renderToString } = require("../../jsx-render/Server/renderToString")
 
 
 export const renderer = (component) => {
+  
     const markup = renderToString(
         component
     )

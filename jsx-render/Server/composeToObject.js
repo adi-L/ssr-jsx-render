@@ -15,6 +15,7 @@ import { isEvent } from "../common/Utilis";
  */
 export function ServerElement(tag, children) {
     this.tag = tag;
+    this.attrs = {};
     this.children = children;
 }
 export function createServerElement(tag, attrs, children) {
@@ -22,20 +23,20 @@ export function createServerElement(tag, attrs, children) {
     el.setAttrs(attrs);
     return el
 }
-ServerElement.prototype.appendChild = function(child){
+ServerElement.prototype.appendChild = function (child) {
     this.children.push(child);
 }
-ServerElement.prototype.prepend = function(child){
+ServerElement.prototype.prepend = function (child) {
     this.children.unshift(child);
 }
-ServerElement.prototype.setAttribute = function(key,value){
+ServerElement.prototype.setAttribute = function (key, value) {
     this.attrs[key] = value;
 }
-ServerElement.prototype.getAttribute = function(key){
+ServerElement.prototype.getAttribute = function (key) {
     return this.attrs[key];
 }
-ServerElement.prototype.remove = function(){
-    this.tag = null;   
+ServerElement.prototype.remove = function () {
+    this.tag = null;
     this.children = [];
 
 }
@@ -44,18 +45,14 @@ ServerElement.prototype.setAttrs = function (attrs = {}) {
     for (const attr in attrs) {
         if (Object.hasOwnProperty.call(attrs, attr)) {
             const value = attrs[attr];
-            const _attr = attr.toLowerCase();
+            let _attr = attr.toLowerCase();
 
-            if (_attr === 'classname') {
-                this.className = value;
-                delete attrs[attr];
-            } else if (_attr === "children") {
+            if (_attr === "children") {
                 delete attrs[attr];
             }
-           else if (isEvent(attr)) {
+            else if (isEvent(attr)) {
                 delete attrs[attr];
-            }
-           
+            } 
         }
     }
     this.attrs = attrs;

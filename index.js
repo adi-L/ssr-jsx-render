@@ -1,4 +1,4 @@
- import { createStore } from "./Common/State/State";
+import hydrate from "./jsx-render/Client/hydrate";
 import { routes } from "./server/Utilis/Router/Router";
 import App from "./src/App";
 
@@ -10,12 +10,6 @@ import App from "./src/App";
 const path = window.location.pathname;
 const Route = routes.find(r=>r.path === path);
 let comp = <App/>;
-if(Route){
-    comp  = <Route.component/>;
-}
-
-if(window.__intailState) {
-    createStore(window.__intailState);
-}
+hydrate(comp,document.getElementById("root"));
 
 

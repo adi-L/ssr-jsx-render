@@ -1,6 +1,5 @@
 import { isArray } from "./array";
 import { styleObjectToString } from "../common/style";
-
 const singleTag = {
     area: 1,
     base: 1,
@@ -28,6 +27,8 @@ function renderAttrs(attrs) {
             if (typeof value === "object" && key === "style") {
                 const results = styleObjectToString(value);
                 collectedAttrs.push(`style="${results}"`);
+            } else if (key.toLowerCase() === "classname") {
+                collectedAttrs.push(`class="${value}"`);
             } else {
                 collectedAttrs.push(`${key}="${value}"`);
             }
@@ -36,6 +37,7 @@ function renderAttrs(attrs) {
     return collectedAttrs.join(" ");
 }
 function collectEelements(jsObject) {
+    
     const collectedElements = [];
     if (!isArray(jsObject)) {
         jsObject = [jsObject];
@@ -52,10 +54,10 @@ function collectEelements(jsObject) {
                 const renderedAttrs = renderAttrs(iterator.attrs);
                 if (singleTag[iterator.tag]) {
                     rendered = `<${iterator.tag} ${renderedAttrs}/>`;
-                    rendered = rendered.replace(" />","/>");
+                    rendered = rendered.replace(" />", "/>");
                 } else {
                     rendered = `<${iterator.tag} ${renderAttrs(iterator.attrs)}>${collectEelements(iterator.children)}</${iterator.tag}>`;
-                    rendered= rendered.replace(" >", ">");
+                    rendered = rendered.replace(" >", ">");
                 }
                 collectedElements.push(rendered.trim());
             }

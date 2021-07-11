@@ -22,6 +22,10 @@ module.exports = (env) => {
     module: {
       rules: [
         {
+          test: /\.css$/i,
+          use: ["to-string-loader", "css-loader"],
+        },
+        {
           test: /\.(js|jsx)$/,
           exclude: /(node_modules|bower_components)/,
           loader: 'babel-loader',

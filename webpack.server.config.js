@@ -36,6 +36,17 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
+          test: /\.css$/,
+          use: [
+            {
+              loader: path.resolve('style.loader.js'),
+              options: {
+                /* ... */
+              },
+            },
+          ],
+        },
+        {
           // Transpiles ES6-8 into ES5
           test: /\.js$/,
           exclude: /node_modules/,

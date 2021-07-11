@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar"
 import Header from "../../Header"
 
+
 const nextApp = "Next Survey";
 export const Home = () =>{
     return   <Header>

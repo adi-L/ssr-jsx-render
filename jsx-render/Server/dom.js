@@ -1,4 +1,5 @@
-import { createServerElement,ServerElement } from './composeToObject'
+import { createServerElement,ServerElement } from './composeToObject';
+
 /**
  * The tag name and create an html together with the attributes
  *
@@ -7,20 +8,18 @@ import { createServerElement,ServerElement } from './composeToObject'
  * @param  {Array} children html nodes from inside de elements
  * @return {HTMLElement|SVGElement} html node with attrs
  */
-function createElements(tagName, attrs, children) {
-  return createServerElement(tagName, attrs, children);
-}
 
 function dom(element, attrs, ...children ) {  
-  if(!attrs) attrs = {}
+  if(!attrs) attrs = {};
   if (typeof element === 'function') {
     const props = Object.assign(attrs,{children:children || [] });
     element = element(props);
+
   }
-  if(element instanceof ServerElement){
+  if(element instanceof ServerElement){     
     return element;
   }
-    const serverElement = createElements(element, attrs, children);
+    const serverElement = createServerElement(element, attrs, children);
     return serverElement;
 }
 

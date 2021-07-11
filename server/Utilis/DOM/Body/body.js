@@ -2,21 +2,21 @@ import { renderToString } from "../../../../jsx-render/Server/renderToString"
 
 
 export const createBody = (markup) => {
-    const id = "app";
+    const id = "root";
     const scripts = [
         "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js",
         "client.script.js"
     ]
-    const body = <body>
-        <div id={id}>
-            {markup}
+    const body = `<body>
+        <div id=${id}>
+            ${markup}
         </div>
-        {
+        ${
             scripts.map((s) => {
-                return <script type="text/javascript" src={s}></script>
-            })
+                return `<script type="text/javascript" src="${s}"></script>`
+            }).join("") 
         }
-    </body>;
+    </body>`;
 
-    return renderToString(body);
+    return body;
 }
